@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %} 
+<center>
+<h1>List of Choices:<br><br></h1>
+
+<div class="table-responsive">
+            <table class="  table-striped table-hover ">
+              <thead>
+                <tr><th>Question</th>  <th>Results of Votes</th><th></th><th></th><th></th><th></th></tr>
+              </thead>
+          
+          {% for choice in object_list %}
+<tr>  <td>{{choice.choice_text}}</td> 
+      <td>{{choice.votes}}</td>    
+      <td> <a href="{% url 'polls:editchoice' pk=choice.id %}">edit</a></td><td> </td> <td> </td> 
+      <td><a href="{% url 'polls:deletechoice' pk=choice.id %}">delete</a></td></td><td> </td> <td> </td>
+</tr>
+{% endfor %}
+ </table>
+       
+<table border="3"><tr><th>Question</th>  <th>Results of Votes</th><th></th></tr>
+{% for choice in object_list %}
+<tr>  <td>{{choice.choice_text}}</td> 
+      <td>{{choice.votes}}</td>     <td> <a href="{% url 'polls:editchoice' pk=choice.id %}">edit</a></td> <td><a href="{% url 'polls:deletechoice' pk=choice.id %}">delete</a></td>
+</tr>
+{% endfor %}
+</table>
+</center>
+{% endblock content %} 
+

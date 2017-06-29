@@ -1,0 +1,21 @@
+{#% if save %#}
+{% extends "base.html" %}
+{% block content %} 
+<center>
+{% if question.id %}
+<h1>Edit an existing Question</h1>
+{% else %}
+ <h1> Ajouter une nouvelle question  <br> <br> <br>  </h1>
+
+<form  method="POST">
+
+{%  csrf_token %}
+
+{{form.as_p}}
+
+<input type="submit" value=" Add Question"/>
+</form>
+</center>
+{% endif %}
+{% endblock %}
+

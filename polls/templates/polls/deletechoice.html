@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %} 
+<center>
+<h1>Delete Choice</h1>
+<p>Are you sure you want to delete the question {{ choice }}?</p>
+<form action="{% url 'polls:deletechoice' pk=choice.id %}" method="POST">
+{% csrf_token %}
+<input type="submit" value="Yes, delete." />
+<a href="{% url 'polls:listechoices' %}">No, cancel.</a>
+</form>
+</center>
+{% endblock content %} 
