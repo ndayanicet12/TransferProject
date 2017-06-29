@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block content %}
+{% if user.is_authenticated %}
+<center>
+{% if form %}
+<body >
+<form method="post"  >
+{% csrf_token %}
+{{ form.as_p }}
+<input type="submit" value="Rechercher"/>
+</form ></body >
+{% endif %}
+
+{% if transfer %}
+<h1>Details  of the payment transfer <br> <br> <br> </h1>
+ 
+<br><br><br>
+<table border="0">
+  <tr>
+      <p><td>Name of sender</td><td>{{ transfer.last_namesender }}  {{ transfer.first_namesender }}</td></p>
+  </tr>
+  <tr>
+      <p><td>City of sender</td><td>{{ transfer.villesender }}</p></td>
+  </tr>
+  <tr>
+      <p><td>Amount</td><td>{{ transfer.montant }}</p></td>
+  </tr>
+  <tr><p><td>MTCN</td><p><td>{{ transfer.MTCN }}</td></p></tr>
+  <tr><p><td>Name of receiver</td><td>{{ transfer.last_namereceiver }}  {{ transfer.first_namereceiver }}</td></p></tr>
+  </table>
+ <br><br><br> <a href="{% url 'transfers:updatetransfer' pk=transfer.id %}"  > Pay tarnsfer</a>
+ <br><br><br> <a href="{% url 'transfers:addtransfer' %}"  > Add a new transfer</a>
+ <br><br><br> <a href="{% url 'transfers:index' %}"  > List transfer envoyés </a>
+ 
+{% endif %}
+ 
+{% endif %}
+</center>
+{% endblock   %}

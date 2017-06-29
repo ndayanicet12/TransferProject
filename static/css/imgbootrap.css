@@ -1,0 +1,25 @@
+.img-responsive .img-thumbnail {
+	@include img-responsive();
+	@include img-thumbnail();
+
+	.left-block & {
+		margin-right: auto;
+	}
+	.center-block & {
+		margin-left: auto;
+		margin-right: auto;
+	}
+	.right-block & {
+		margin-left: auto;
+	}
+}
+
+.img-responsive .img-center .tocenter .toright .img-rigth  .img-left {
+  margin: 0 auto;
+  display: inline;
+}
+
+.tocenter {
+    margin:0 auto;
+    display: inline;
+    }

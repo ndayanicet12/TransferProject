@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block content %}
+{% if user.is_authenticated %}
+<center>
+{% if form %}
+<form method="post" >
+{% csrf_token %}
+{{form.as_p}}
+<input type="submit" value="Payer Transfert"/>
+</form >
+
+{% endif %}
+
+{% if trs %}
+<h1>Details  of the payment transfer <br> <br> <br> </h1>
+
+<table border="0">
+  <tr>
+      <p><td>Name of sender</td><td>{{ trs.last_namesender }}  {{ trs.first_namesender }}</td></p>
+  </tr>
+  <tr>
+      <p><td>City of sender</td><td>{{ trs.villesender }}</p></td></tr>
+  <tr>
+      <p><td>Amount</td><td>{{ trs.montant }}</p></td></tr>
+  <tr><p><td>Date of sending</td><td> {{ trs.datedepot }}</td></p></tr> 
+
+  <tr><p><td>MTCN</td><p><td>{{ trs.MTCN }}</td></p></tr>
+  <tr><p><td>Name of receiver</td><td>{{ trs.last_namereceiver }}  {{ trs.first_namereceiver }}</td></p></tr>
+  <tr><p><td>Ville du distinataire</td><td>{{ trs.villereceiver }}</td></p></tr>
+  <tr><p><td>Addresse du destiantaire</td><td> {{ trs.addressereceiver }}</td></p></tr> 
+  <tr><p><td>Téléphone du destiantaire</td><td> {{ trs.phonereceiver }}</td></p></tr> 
+  <tr><p><td>CIN du percepteur</td><p><td>{{ trs.cin }}</td></p></tr>
+  <tr><p><td>Statut du transfert</td><td>{{ trs.statut }}</td></p></tr>
+  <tr><p><td>Date of paiement</td><td> {{ trs.datereceiver }}</td></p></tr> 
+</table>
+
+ <br><br><br> <a href="{% url 'transfers:addtransfer' %}"  > Add a new transfer</a>
+ <br><br><br> <a href="{% url 'transfers:listeTransfersPayes' %}"  > List transfers received </a>
+{% endif %}
+</center>
+{% endif %}
+{% endblock   %}

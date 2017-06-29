@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+{% if user.is_authenticated %}
+<center>
+<h1>Details des  transferts envoyés:<br></h1>
+
+ 
+<table border="0">
+ {% for trs in trans %}
+<br><br>  <a href="{% url 'transfers:transferdetail' pk=trs.id  %}">  {{ trs.first_namesender }}</a>
+
+ {% endfor %}
+</table>
+<br><br> <a href="{% url 'transfers:addtransfer' %}"  > Add a new transfer</a>
+
+ 
+</center>
+
+{% endif %}
+{% endblock %}

@@ -1,0 +1,10 @@
+
+{% load staticfiles %}
+{% if user.is_authenticated %}
+    <p>Welcome, {{ user.first_name}}  <a href="{% url 'logout' %}">logout</a></p>
+{% else %}
+    <p>Welcome, Invite <a href="{% url 'login' %}">login</a></p>
+{% endif %}
+{% block content  %}
+{% endblock %}
+
