@@ -61,7 +61,7 @@
   <center> 
 {% if transfert %}
 {#% if  DJANGO_PDF_OUTPUT %#}
-<br><br><br>
+ 
 <h1> Detail du transfert :<br><br/> </h1>
 <table border="0">
   <tr>
@@ -89,9 +89,9 @@
 {#% endif %#}
 {% if not DJANGO_PDF_OUTPUT %}
 
-<br><br><br><a href="/clatransfers/detailtransfer/{{ transfert.id }}/?format=pdf">Imprimer le detail du transfert reçu</a>
-<br><br><br> <a href="{% url 'clatransfers:createtransfer' %}"  > Add a new transfer</a>
- <br><br><br> <a href="{% url 'clatransfers:indexrecu' %}"  > List transfer received </a> 
+ <br><br><a href="/clatransfers/detailtransfer/{{ transfert.id }}/?format=pdf">Imprimer le detail du transfert reçu</a>
+ <br><br> <a href="{% url 'clatransfers:createtransfer' %}"  > Add a new transfer</a>
+ <br><br> <a href="{% url 'clatransfers:indexrecu' %}"  > List transfer received </a> 
 {% endif %}
 {% endif %}
 

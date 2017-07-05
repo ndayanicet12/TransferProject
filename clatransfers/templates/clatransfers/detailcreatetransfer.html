@@ -39,8 +39,7 @@
   <body>
   <center> 
 {% if transfert %}
-{#% if DJANGO_PDF_OUTPUT %#}
-<br><br><br>
+ 
 <h1> Detail du transfert :<br><br/> </h1>
 <table border="0">
   <tr>
@@ -57,7 +56,7 @@
   <tr><p><td>Statut</td><p><td>{{ transfert.statut }}</td></p></tr>
  
 </table>
-{#% endif %#}
+ 
 {% if not DJANGO_PDF_OUTPUT %}
 <br><br><br><a href="/clatransfers/detailcreatetransfer/{{ transfert.id }}?format=pdf">Imprimer le detail du transfert envoye</a>
 <br><br><br> <a href="{% url 'clatransfers:createtransfer' %}"  > Add a new transfer</a>
