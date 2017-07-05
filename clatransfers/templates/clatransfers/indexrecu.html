@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% if user.is_authenticated %}
+{% block content %}
+{#% if not  DJANGO_PDF_OUTPUT %#}
+<div align="left" class="collectionlist">
+ 
+
+
+<center>
+<h1>Details des  transferts reçus:<br><br></h1>
+ 
+<table border="3">
+<tr><th>Name of Sender </th><th>Amount</th><th>MTCN</th><th>Name of Receiver</th><th>CIN of Receiver</th><th>Date of reception</th><th>Looking Details</th></tr>
+
+ {% for transfers in transfer %}
+<tr><td>{{ transfers.first_namesender }} {{ transfers.last_namesender }} </td><td>{{ transfers.montant }}</td><td>{{ transfers.MTCN }}</td><td>{{ transfers.first_namereceiver }} {{ transfers.last_namereceiver }}</td><td>{{ transfers.cin }}</td><td>{{ transfers.datereceiver }}</td><td> <a href="{% url 'clatransfers:detailtransfer' pk=transfers.id  %}">  {{ transfers.first_namesender }}</a></td></tr>
+
+{% endfor %}
+ </table>
+ 
+<br><br><br><br> <a href="{% url 'clatransfers:createtransfer' %}"  > Add a new transfer</a> 
+
+</center>
+</div>
+{#% endif %#}
+
+{% endblock %}
+{% endif %}

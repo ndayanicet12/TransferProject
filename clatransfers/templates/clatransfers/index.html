@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+{% if user.is_authenticated %}
+
+<center>
+<h1>Details des  transferts envoyés:<br><br></h1>
+
+
+<table border="3"> 
+ 
+<tr><th>Name of Sender </th><th>City of Sender</th><th>Amount</th><th>MTCN</th><th>Name of Receiver</th><th> Date  of Sending </th><th>Looking Details</th></tr>
+ {% for transfers in transfer %}
+<tr><td>{{ transfers.first_namesender }} {{ transfers.last_namesender }} </td><td>{{ transfers.villesender }}</td><td>{{ transfers.montant }}</td><td>{{ transfers.MTCN }}</td><td>{{ transfers.first_namereceiver }} {{ transfers.last_namereceiver }}</td><td>{{ transfers.datedepot }}</td><td> <a href="{% url 'clatransfers:detailcreatetransfer' pk=transfers.id  %}">  {{ transfers.first_namesender }}</a></td></tr>
+ {% endfor %}
+</table>
+</div>
+<br><br> <a href="{% url 'clatransfers:createtransfer' %}"  > Add a new transfer</a>
+
+ 
+</center>
+
+{% endif %}
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+{% if user.is_authenticated %}
+<center>
+{% if transfer %}
+<h1>Details du  transfert reçu : <br><br></h1>
+<table border="0"> 
+<tr><p><td>Name of the Sender</td><td>{{ transfer.last_namesender }} {{ transfer.first_namesender }} </td></p></tr>
+<tr><p><td>Amount</td><td>{{ transfer.montant }} </td></p></tr>
+<tr><p><td>Date of sending</td><td>{{ transfer.datedepot }} </td></p></tr>
+<tr><p><td>MTCN</td><td>{{ transfer.MTCN }} </td></p></tr>
+<tr><p><td>Name of the Receiver</td><td>{{ transfer.last_namereceiver }} {{ transfer.first_namereceiver}} </td></p></tr>
+<tr><p><td>National identity Card</td><td>{{ transfer.cin }} </td></p></tr>
+  <tr><p><td>Date of the reception</td><td>{{ transfer.datereceiver }} </td></p></tr>
+  <tr><p><td>City of receiver</td><td>{{ trs.villereceiver }}</td></p></tr>
+  <tr><p><td>Address of receiver</td><td> {{ trs.addressereceiver }}</td></p></tr> 
+  <tr><p><td>Telephone of receiver</td><td> {{ trs.phonereceiver }}</td></p></tr> 
+
+  <tr><p><td>Statut</td><td>{{ transfer.statut }} </td></p></tr>
+</table>
+<br><br><br> <a href="{% url 'transfers:listeTransfersPayes' %}"  > Return to list of transfers received</a>
+{% endif %}
+</center>
+{% endif %}
+{% endblock  %}
